@@ -12,8 +12,8 @@ public class Number3 {
         System.out.println("Введите любое число");
         int number = in.nextInt();
         if (number % 10 == 7) {
-            System.out.println("Последняя цифра - 7");
+            System.out.println(" Последняя цифра - 7");
         } else
-            System.out.println("Последняя цифра не 7");
+            System.out.println(" Последняя цифра не 7");
     }
 }
