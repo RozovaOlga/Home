@@ -24,13 +24,19 @@ public class Number6 {
             if (day == 28) {
                 System.out.println("01." + (month + 1) + "." + year);
             } else if (day == 29) {
-                System.out.println("Ваш год высокосный?В случае утвердительного ответа введите true, в ином случае - false");
-                boolean vys = in.nextBoolean();
-                System.out.println(vys == true ? ("01." + (month + 1) + "." + year) : ("дня с таким номером не существует"));
-            } else if (day >= 30) {
-                System.out.println("дня с таким номером не существует");
-            } else {
-                System.out.println((day + 1) + "." + month + "." + year);
+                if (year % 4 == 0) {
+                    if (year % 100 != 0) {
+                        System.out.println("01." + (month + 1) + "." + year);
+                    } else if (year % 400 == 0) {
+                        System.out.println("01." + (month + 1) + "." + year);
+                    } else {
+                        System.out.println("дня с таким номером не существует");
+                    }
+                } else if (day >= 30) {
+                    System.out.println("дня с таким номером не существует");
+                } else {
+                    System.out.println((day + 1) + "." + month + "." + year);
+                }
             }
         } else if ((month == 4) || (month == 6) || (month == 9) || (month == 11)) {
             if (day == 30) {

@@ -1,4 +1,3 @@
-import java.util.concurrent.Callable;
 
 /**
  * Имеются 2 дома размерами  a  на b и с на d.Имеется участо размерами e на f.
@@ -8,19 +7,9 @@ import java.util.concurrent.Callable;
 public class Number7 {
 
     public static void main(String[] args) {
-        Home home1 = new Home();
-        home1.setLength(4);
-        home1.getLength();
-        home1.setWidth(3);
-        home1.getWidth();
-        Home home2 = new Home();
-        home2.setLength(1);
-        home2.getLength();
-        home2.setWidth(2);
-        home2.getLength();
-        Land land = new Land();
-        land.setLength(5);
-        land.setWidth(9);
+        Home home1 = new Home(3, 5);
+        Home home2 = new Home(11, 3);
+        Land land = new Land(5, 15);
         Calculate calculate = new Calculate();
         calculate.testCalculate(home1, home2, land);
     }
@@ -28,55 +17,41 @@ public class Number7 {
 
 class Home {
     int length;
-    int Width;
+    int width;
 
-    public void setLength(int length) {
+    public Home(int length, int width) {
         this.length = length;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setWidth(int width) {
-        this.Width = width;
-    }
-
-    public int getWidth() {
-        return Width;
+        this.width = width;
     }
 }
 
 class Land {
     int length;
-    int Width;
+    int width;
 
-    public void setLength(int length) {
+    public Land(int length, int width) {
         this.length = length;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setWidth(int width) {
-        this.Width = width;
-    }
-
-    public int getWidth() {
-        return Width;
+        this.width = width;
     }
 }
 
 class Calculate {
     public void testCalculate(Home home1, Home home2, Land land) {
-        if (((home1.length + home2.length) <= land.length) && ((home1.Width + home2.Width) <= land.Width)) {
+        if (((home1.length + home2.length) <= land.length) && (home1.width <= land.width) && (home2.width <= land.length)) {
             System.out.println("Помещаются");
-        } else if (((home1.length + home2.Width) <= land.length) && ((home1.Width + home2.length) <= land.Width)) {
+        } else if (((home1.length + home2.width) <= land.length) && (home1.width <= land.width) && (home2.length <= land.width)) {
             System.out.println("Помещаются");
-        } else if (((home1.length + home2.Width) <= land.Width) && ((home1.Width + home2.length) <= land.length)) {
+        } else if (((home1.length + home2.width) <= land.width) && (home1.width <= land.length) && (home2.length <= land.length)) {
             System.out.println("Помещаются");
-        } else if (((home1.length + home2.length) <= land.Width) && ((home1.Width + home2.Width) <= land.length)) {
+        } else if (((home1.length + home2.length) <= land.width) && (home1.width <= land.length) && (home2.width <= land.length)) {
+            System.out.println("Помещаются");
+        } else if (((home1.width + home2.width) <= land.width) && (home1.length <= land.length) && (home2.length <= land.length)) {
+            System.out.println("Помещаются");
+        } else if (((home1.width + home2.length) <= land.width) && (home1.length <= land.length) && (home2.width <= land.length)) {
+            System.out.println("Помещаются");
+        } else if (((home1.width + home2.length) <= land.length) && (home1.length <= land.width) && (home2.width <= land.width)) {
+            System.out.println("Помещаются");
+        } else if (((home1.width + home2.width) <= land.length) && (home1.length <= land.width) && (home2.length <= land.width)) {
             System.out.println("Помещаются");
         } else {
             System.out.println("Не помещаются");
