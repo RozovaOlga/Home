@@ -22,7 +22,19 @@ public class Number6 {
             System.out.println("01.01." + (year + 1));
         } else if (month == 2) {
             if (day == 28) {
-                System.out.println("01." + (month + 1) + "." + year);
+                if (year % 4 == 0) {
+                    if (year % 100 != 0) {
+                        System.out.println((day + 1) + "." + month + "." + year);
+                    } else if (year % 400 == 0) {
+                        System.out.println((day + 1) + "." + month + "." + year);
+                    } else {
+                        System.out.println("01." + (month + 1) + "." + year);
+                    }
+                } else if (day >= 30) {
+                    System.out.println("дня с таким номером не существует");
+                } else {
+                    System.out.println("1" + "." + month + "." + year);
+                }
             } else if (day == 29) {
                 if (year % 4 == 0) {
                     if (year % 100 != 0) {
@@ -30,14 +42,17 @@ public class Number6 {
                     } else if (year % 400 == 0) {
                         System.out.println("01." + (month + 1) + "." + year);
                     } else {
-                        System.out.println("дня с таким номером не существует");
+                        System.out.println("Такого дня не существует");
                     }
-                } else if (day >= 30) {
-                    System.out.println("дня с таким номером не существует");
                 } else {
-                    System.out.println((day + 1) + "." + month + "." + year);
+                    System.out.println("Такого дня не существует");
                 }
+            } else if (day >= 30) {
+                System.out.println("дня с таким номером не существует");
+            } else {
+                System.out.println("1" + "." + (month + 1) + "." + year);
             }
+
         } else if ((month == 4) || (month == 6) || (month == 9) || (month == 11)) {
             if (day == 30) {
                 System.out.println("01." + (month + 1) + "." + year);
