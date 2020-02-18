@@ -15,7 +15,7 @@ public class Number8 {
         factorial.calculateFactorial(-2);
     }
 
-    /**
+    /*
      * The type Factorial.
      */
     static class Factorial {
@@ -33,8 +33,8 @@ public class Number8 {
                 System.out.println("factorial cannot be counted");
             } else {
                 while (number > 1) {
-                    BigInteger i2 = BigInteger.valueOf(number);
-                    factorialNumber = factorialNumber.multiply(i2);
+                    BigInteger number2 = BigInteger.valueOf(number);
+                    factorialNumber = factorialNumber.multiply(number2);
                     number -= 1;
                 }
                 System.out.println(factorialNumber);
