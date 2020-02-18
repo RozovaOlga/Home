@@ -9,7 +9,7 @@ public class Number11 {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        System.out.println(primeNumber(101));
+        System.out.println(primeNumber(-7));
     }
 
     /**

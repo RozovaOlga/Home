@@ -9,23 +9,35 @@ public class Number8 {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        System.out.println(calculateFactorial(20));
+        Factorial factorial = new Factorial();
+        factorial.calculateFactorial(-4);
     }
 
     /**
-     * Counts the factorial of a number.
-     *
-     * @param number the number
-     * @return the factorial
+     * The type Factorial.
      */
-    public static long calculateFactorial(int number) {
-        long factorial = 1;
-        while (number > 1) {
-            factorial *= number;
-            number -= 1;
+    static class Factorial {
+        /**
+         * Calculate factorial.
+         * Checks a negative number or not.
+         * Counts the factorial of a number.
+         *
+         * @param number the number
+         */
+        public void calculateFactorial(int number) {
+            long factorialNumber = 1;
+            if (number < 1) {
+                System.out.println("factorial cannot be counted");
+            } else {
+                while (number > 1) {
+                    factorialNumber *= number;
+                    number -= 1;
+                }
+                System.out.println(factorialNumber);
+            }
         }
-        return
-                factorial;
     }
 }
+
+
 
