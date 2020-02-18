@@ -1,3 +1,5 @@
+import java.math.BigInteger;
+
 /**
  * The type Number 8.
  * Рассчитать факториал числа
@@ -10,7 +12,7 @@ public class Number8 {
      */
     public static void main(String[] args) {
         Factorial factorial = new Factorial();
-        factorial.calculateFactorial(-4);
+        factorial.calculateFactorial(-2);
     }
 
     /**
@@ -25,12 +27,14 @@ public class Number8 {
          * @param number the number
          */
         public void calculateFactorial(int number) {
-            long factorialNumber = 1;
+            BigInteger factorialNumber = BigInteger.valueOf(1);
+
             if (number < 1) {
                 System.out.println("factorial cannot be counted");
             } else {
                 while (number > 1) {
-                    factorialNumber *= number;
+                    BigInteger i2 = BigInteger.valueOf(number);
+                    factorialNumber = factorialNumber.multiply(i2);
                     number -= 1;
                 }
                 System.out.println(factorialNumber);
