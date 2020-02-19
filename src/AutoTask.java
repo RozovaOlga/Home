@@ -10,10 +10,10 @@ import java.util.Scanner;
 public class AutoTask {
     public static void main(String[] args) {
         Auto bus = new Auto("multivan T6", 50, 5.0);
-        Scanner in=new Scanner(System.in);
-        System.out.println("Я ненавижу эту задачу,и добавила сканнер,чтоб потянуть время между созданием машинпше фвв");
         Auto golf = new Auto("volkswagen golf 7", 50, 5.0);
         Calculator.calculatorCounts(bus, golf);
+        System.out.println(bus.timestamp);
+        System.out.println(golf.timestamp);
     }
 }
 
@@ -28,7 +28,7 @@ class Auto {
         this.name = name;
         this.tankCapacity = tankCapacity;
         this.fuelConsumption = fuelConsumption;
-        this.timestamp = new Timestamp(System.currentTimeMillis());
+        this.timestamp = new Timestamp(System.nanoTime());
     }
 
     public void setName(String name) {
