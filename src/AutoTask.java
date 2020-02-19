@@ -5,7 +5,6 @@
  */
 
 import java.sql.Timestamp;
-import java.util.Scanner;
 
 public class AutoTask {
     public static void main(String[] args) {
