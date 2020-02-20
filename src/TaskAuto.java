@@ -3,8 +3,12 @@
  * Вычислить,кто проедет большее расстояние при заправке полного бака.
  * Кто из них старше
  */
-
 public class TaskAuto {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         Auto bus = new Auto("multivan T6", 50, 5.0);
         Auto golf = new Auto("volkswagen golf 7", 50, 5.0);
