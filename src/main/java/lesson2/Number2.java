@@ -1,3 +1,4 @@
+package main.java.lesson2;
 
 /**
  * Задание 2

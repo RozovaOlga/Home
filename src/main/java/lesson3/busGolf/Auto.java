@@ -1,9 +1,9 @@
-package main.java.lesson3;
+package main.java.lesson3.busGolf;
 
 import java.sql.Timestamp;
 
 /**
- * The type main.java.lesson3.Auto.
+ * The type main.java.lesson3.Auto.Auto.
  */
 class Auto {
 
@@ -16,7 +16,7 @@ class Auto {
     Timestamp timestamp;
 
     /**
-     * Instantiates a new main.java.lesson3.Auto.
+     * Instantiates a new main.java.lesson3.Auto.Auto.
      *
      * @param name            the name
      * @param tankCapacity    the tank capacity

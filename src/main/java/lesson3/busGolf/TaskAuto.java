@@ -1,7 +1,5 @@
-package main.java.lesson3;
+package main.java.lesson3.busGolf;
 
-import main.java.lesson3.Auto;
-import main.java.lesson3.Calculator;
 
 /**
  * есть 2 авто.Даны имена,размер бака и расход на 100км.

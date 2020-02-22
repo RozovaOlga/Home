@@ -1,3 +1,5 @@
+package main.java.lesson3;
+
 import java.math.BigInteger;
 
 /**
@@ -20,7 +22,7 @@ public class Number8 {
      */
     static class Factorial {
         /**
-         * Calculate factorial.
+         * main.java.lesson2.Home.Calculate factorial.
          * Checks a negative number or not.
          * Counts the factorial of a number.
          *

@@ -1,3 +1,5 @@
+package main.java.lesson3;
+
 /**
  * The type Number 10.
  * Имеется целое число.Посчитать сумму цифр данного числа
