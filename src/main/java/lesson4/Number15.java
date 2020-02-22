@@ -6,23 +6,23 @@ package main.java.lesson4;
  */
 public class Number15 {
     public static void main(String[] args) {
-        int massiv[] = {5, 0, 6, 10, 3, 0, 10};
-        int maxElement = massiv[0];
-        int indexMax = massiv.length;
-        int minElement = massiv[0];
+        int numbers[] = {5, 0, 6, 10, 3, 0, 10};
+        int maxElement = numbers[0];
+        int indexMax = numbers.length;
+        int minElement = numbers[0];
         int indexMin = 0;
         int sum = 0;
-        int indexDistance = massiv.length;
+        int indexDistance = numbers.length;
         /**
          *look up the value of the maximum and minimum element in the array
          */
-        for (int i = 0; i < massiv.length; i++) {
-            if (massiv[i] > maxElement) {
-                maxElement = massiv[i];
+        for (int i = 0; i < numbers.length; i++) {
+            if (numbers[i] > maxElement) {
+                maxElement = numbers[i];
                 indexMax = i;
             }
-            if (massiv[i] < minElement) {
-                minElement = massiv[i];
+            if (numbers[i] < minElement) {
+                minElement = numbers[i];
                 indexMin = i;
             }
         }
@@ -30,9 +30,9 @@ public class Number15 {
          * look for the minimum distance between the maximum and minimum element in the array
          * Assign them an index
          */
-        for (int i = 0; i < massiv.length; i++) {
-            for (int j = 0; j < massiv.length; j++) {
-                if ((massiv[i] == maxElement) && (massiv[j] == minElement) && (Math.abs(i - j) < indexDistance + 1)) {
+        for (int i = 0; i < numbers.length; i++) {
+            for (int j = 0; j < numbers.length; j++) {
+                if ((numbers[i] == maxElement) && (numbers[j] == minElement) && (Math.abs(i - j) < indexDistance + 1)) {
                     indexDistance = Math.abs(i - j) - 1;
                     indexMin = j;
                     indexMax = i;
@@ -44,12 +44,12 @@ public class Number15 {
          */
         if (indexMin < indexMax) {
             for (int i = indexMin + 1; i < indexMax; i++) {
-                sum = sum + massiv[i];
+                sum = sum + numbers[i];
             }
         }
         if (indexMin > indexMax) {
             for (int i = indexMax + 1; i < indexMin; i++) {
-                sum = sum + massiv[i];
+                sum = sum + numbers[i];
             }
         }
         System.out.println(sum);

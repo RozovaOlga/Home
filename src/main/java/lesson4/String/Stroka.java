@@ -6,22 +6,22 @@ package main.java.lesson4.String;
 
 public class Stroka {
     public static void main(String[] args) {
-        String string="Hello";
+        String string = "Hello";
         /**
          * Create an array of string characters
          */
-        char[] massivChar = string.toCharArray();
+        char[] charString = string.toCharArray();
         /**
          * Flip Array. Print
          */
         char temp;
-        for (int i = 0,j=string.length()-1; i < massivChar.length / 2; i++,j--) {
-            temp = massivChar[j];
-            massivChar[j] = massivChar[i];
-            massivChar[i] = temp;
+        int j = string.length() - 1;
+        for (int i = 0; i < charString.length / 2; i++, j--) {
+            temp = charString[j];
+            charString[j] = charString[i];
+            charString[i] = temp;
         }
-        System.out.println(massivChar);
+        System.out.println(charString);
     }
-
-    }
+}
 

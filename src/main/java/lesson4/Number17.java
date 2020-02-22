@@ -5,21 +5,20 @@ package main.java.lesson4;
  */
 public class Number17 {
     public static void main(String[] args) {
-        int[][] matrice = new int[10][10];
-        for (int i = 0; i < matrice.length; i++) {
-            for (int j = 0; j < matrice[i].length; j++) {
-                if ((i>j)&&(i<matrice.length/2)) {
-                    matrice[i][j] = 0;
-                }else if ((i>j)&&(j<(matrice[i].length-i-1))) {
-                    matrice[i][j] = 0;
-                }
-                else if ((i<j)&&(i>matrice.length/2)){
-                    matrice[i][j] = 0;
-                }else if ((i<j)&&(j>matrice[i].length-i-1)){
-                    matrice[i][j] = 0;
-                }
-                else matrice[i][j]=1;
-                System.out.print(matrice[i][j] + " "); }
+        int[][] matrix = new int[10][10];
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                if ((i > j) && (i < matrix.length / 2)) {
+                    matrix[i][j] = 0;
+                } else if ((i > j) && (j < (matrix[i].length - i - 1))) {
+                    matrix[i][j] = 0;
+                } else if ((i < j) && (i > matrix.length / 2)) {
+                    matrix[i][j] = 0;
+                } else if ((i < j) && (j > matrix[i].length - i - 1)) {
+                    matrix[i][j] = 0;
+                } else matrix[i][j] = 1;
+                System.out.print(matrix[i][j] + " ");
+            }
             System.out.println();
         }
     }
