@@ -1,13 +1,12 @@
-package main.java.lesson3;
+package main.java.lesson3.busGolf;
 
-import main.java.lesson3.Auto;
 
 /**
- * The type main.java.lesson3.Calculator.
+ * The type main.java.lesson3.Auto.Calculator.
  */
 class Calculator {
     /**
-     * main.java.lesson3.Calculator counts.
+     * main.java.lesson3.Auto.Calculator counts.
      * Calculates which car will drive more
      *
      * @param bus  the bus
