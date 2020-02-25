@@ -19,13 +19,13 @@ public class Number18 {
         String str = "1234% ЛяЛя № # ^ &  NoNo**";
         Pattern pattern = Pattern.compile(symbols);
         Matcher matcher = pattern.matcher(str);
-        int n = 0;
+        int count = 0;
         while (matcher.find()) {
-            n++;
+            count++;
         }
         System.out.println(str.length());
-        System.out.println(n);
-        System.out.println(str.length() - n);
+        System.out.println(count);
+        System.out.println(str.length() - count);
     }
 }
 
