@@ -13,8 +13,9 @@ public class Number19 {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        String text = "  Скучный и обыденный     текст  , который я разделила запятыми , чтоб проверить, считает ли их программа !!!  ";
-        int number = text.replaceAll("[.,!?:…]","").trim().split(" \\s*").length;
+        String text = "  Скучный и обыденный  555   текст,который я разделила запятыми ," +
+                " чтоб проверить,считает ли их моя$программа   ";
+        int number = text.replaceAll("[^A-Za-zА-Яа-я_]", " ").trim().split(" \\s*").length;
         System.out.println(number);
     }
 }
