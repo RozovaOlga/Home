@@ -16,7 +16,7 @@ public class Number18 {
      */
     public static void main(String[] args) {
         String symbols = "\\p{javaWhitespace}|\\p{Alnum}|[а-яА-ЯёЁ]";
-        String str = "Ёжик1234";
+        String str = "Ёжик1234* ";
         Pattern pattern = Pattern.compile(symbols);
         Matcher matcher = pattern.matcher(str);
         int count = 0;
