@@ -15,8 +15,8 @@ public class Number18 {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        String symbols = "\\p{javaWhitespace}|\\p{Alnum}|[а-яА-Я]";
-        String str = "1234% ЛяЛя № # ^ &  NoNo**";
+        String symbols = "\\p{javaWhitespace}|\\p{Alnum}|[а-яА-ЯёЁ]";
+        String str = "Ёжик1234";
         Pattern pattern = Pattern.compile(symbols);
         Matcher matcher = pattern.matcher(str);
         int count = 0;
