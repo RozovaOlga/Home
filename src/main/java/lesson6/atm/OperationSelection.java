@@ -8,9 +8,11 @@ public class OperationSelection {
     public static void BalanceOperation(Cart cart) throws IOException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
         FileInputStream fileInputStream = new FileInputStream("balance.bin");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        cart = (Cart) objectInputStream.readObject();
-        objectInputStream.close();
+        if (fileInputStream.available() > 0) {
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            cart = (Cart) objectInputStream.readObject();
+            objectInputStream.close();
+        }
         System.out.println("Введите номер операции.1-положить деньги.2 -снять деньги.3-посмотреть баланс.4-выход");
         int numberOperation = scanner.nextInt();
         int balance = cart.getBalance();
@@ -75,8 +77,6 @@ public class OperationSelection {
             default:
                 System.out.println("Такой операции не существует");
         }
-
-
     }
 }
 
