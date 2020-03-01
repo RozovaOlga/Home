@@ -35,12 +35,11 @@ public class MoneyTransaction {
         } else {
             System.out.print("Извините,банкомат выдает только купюры номиналом 20,50,100");
         }
-        FileOutputStream fileOutputStream = new FileOutputStream("D:\\balance.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream(".\\balance.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(cart);
         objectOutputStream.close();
     }
-
     public static void Take(int takeMoney, Cart cart) throws IOException {
         int faceValue20 = 20;
         int faceValue50 = 50;
@@ -65,7 +64,7 @@ public class MoneyTransaction {
         } else {
             System.out.print("Извините,банкомат принимает купюры номиналом 20,50,100");
         }
-        FileOutputStream fileOutputStream = new FileOutputStream("D:\\balance.txt");
+        FileOutputStream fileOutputStream = new FileOutputStream(".\\balance.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(cart);
         objectOutputStream.close();
