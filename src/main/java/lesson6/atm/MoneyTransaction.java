@@ -35,7 +35,7 @@ public class MoneyTransaction {
         } else {
             System.out.print("Извините,банкомат выдает только купюры номиналом 20,50,100");
         }
-        FileOutputStream fileOutputStream = new FileOutputStream("balance.bin");
+        FileOutputStream fileOutputStream = new FileOutputStream("D:\\balance.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(cart);
         objectOutputStream.close();
@@ -65,7 +65,7 @@ public class MoneyTransaction {
         } else {
             System.out.print("Извините,банкомат принимает купюры номиналом 20,50,100");
         }
-        FileOutputStream fileOutputStream = new FileOutputStream("balance.bin");
+        FileOutputStream fileOutputStream = new FileOutputStream("D:\\balance.txt");
         ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
         objectOutputStream.writeObject(cart);
         objectOutputStream.close();

@@ -7,7 +7,9 @@ import java.util.Scanner;
 public class OperationSelection {
     public static void BalanceOperation(Cart cart) throws IOException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
-        FileInputStream fileInputStream = new FileInputStream("balance.bin");
+        File file=new File("D:\\","balance.txt" );
+        boolean create=file.createNewFile();
+        FileInputStream fileInputStream = new FileInputStream(file);
         if (fileInputStream.available() > 0) {
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             cart = (Cart) objectInputStream.readObject();
