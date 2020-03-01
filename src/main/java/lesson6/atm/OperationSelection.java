@@ -76,10 +76,7 @@ public class OperationSelection {
                 System.out.println("Такой операции не существует");
         }
 
-        FileOutputStream fileOutputStream = new FileOutputStream("balance.bin");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(cart);
-        objectOutputStream.close();
+
     }
 }
 
