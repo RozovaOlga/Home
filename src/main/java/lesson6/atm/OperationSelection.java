@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class OperationSelection {
     public static void BalanceOperation(Cart cart) throws IOException, ClassNotFoundException {
         Scanner scanner = new Scanner(System.in);
-        File file = new File(".\\", "balance.txt");
+        File file = new File("balance.txt");
         boolean create = file.createNewFile();
         FileInputStream fileInputStream = new FileInputStream(file);
         if (fileInputStream.available() > 0) {
@@ -77,6 +77,19 @@ public class OperationSelection {
                 break;
             default:
                 System.out.println("Такой операции не существует");
+                System.out.println("Для продолжения работы нажмите 1. Для выхода - нажмите 2");
+                int continueOperation4 = scanner.nextInt();
+                switch (continueOperation4) {
+                    case 1:
+                        BalanceOperation(cart);
+                        break;
+                    case 2:
+                        System.out.println("До свидания");
+                        break;
+                    default:
+                        System.out.println("Такой операции не существует");
+                }
+                break;
         }
     }
 }

@@ -38,8 +38,10 @@ public class Cart implements Serializable {
             match = (match << 3) + (match << 1) + 9;
         if (result != 4) {
             System.out.println("Пароль должен состоять из 4 цифр");
+            PinCodeCheck(cart);
         } else if (pin != pinCode) {
             System.out.println("Неправильный пароль");
+            PinCodeCheck(cart);
         } else {
             OperationSelection.BalanceOperation(cart);
         }
