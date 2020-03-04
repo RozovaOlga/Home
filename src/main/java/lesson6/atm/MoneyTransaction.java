@@ -1,51 +1,60 @@
 package main.java.lesson6.atm;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.util.Scanner;
 
 public class MoneyTransaction {
-    public static void Give(int giveMoney, Cart cart) throws IOException {
-        int faceValue20 = 20;
-        int faceValue50 = 50;
-        int faceValue100 = 100;
-        int numberOfBanknotes = giveMoney / faceValue20;
-        int numberFaceValue20 = 0, numberFaceValue50 = 0, numberFaceValue100 = 0;
-        for (int i = 0; faceValue100 * i <= giveMoney; i++) {
-            for (int j = 0; faceValue100 * i + faceValue50 * j <= giveMoney; j++) {
-                for (int k = 0; faceValue100 * i + faceValue50 * j + faceValue20 * k <= giveMoney; k++) {
-                    if ((giveMoney == faceValue100 * i + faceValue50 * j + faceValue20 * k) && (numberOfBanknotes > i + j + k)) {
-                        numberOfBanknotes = i + j + k;
-                        numberFaceValue20 = k;
-                        numberFaceValue50 = j;
-                        numberFaceValue100 = i;
-                    }
-                }
-            }
-        }
-        if ((numberFaceValue20 + numberFaceValue50 + numberFaceValue100 != 0) || (giveMoney == faceValue20)) {
+    DataOperations dataOperations = new Storage();
+
+    public boolean give(int giveMoney, Cart cart) {
+        cart = dataOperations.read(cart);
+        boolean resultGive = true;
+        if (cart.getBalance() >= giveMoney) {
+            int faceValue20 = 20;
+            int faceValue50 = 50;
+            int faceValue100 = 100;
+            int numberOfBanknotes = giveMoney / faceValue20;
+            int numberFaceValue20 = 0, numberFaceValue50 = 0, numberFaceValue100 = 0;
             if (giveMoney == faceValue20) {
                 numberFaceValue20 = 1;
             }
-            cart.setBalance(cart.getBalance() - giveMoney);
-            System.out.println("Вам выдали купюр достоинством 20р - " + numberFaceValue20 + "шт." + "\n" +
-                    "купюр достоинством 50р - " + numberFaceValue50 + "шт." + "\n"
-                    + "купюр достоинством 100р - " + numberFaceValue100 + "шт.");
-            System.out.println("Ваш баланс " + cart.getBalance());
+            for (int i = 0; faceValue100 * i <= giveMoney; i++) {
+                for (int j = 0; faceValue100 * i + faceValue50 * j <= giveMoney; j++) {
+                    for (int k = 0; faceValue100 * i + faceValue50 * j + faceValue20 * k <= giveMoney; k++) {
+                        if ((giveMoney == faceValue100 * i + faceValue50 * j + faceValue20 * k) && (numberOfBanknotes > i + j + k)) {
+                            numberOfBanknotes = i + j + k;
+                            numberFaceValue20 = k;
+                            numberFaceValue50 = j;
+                            numberFaceValue100 = i;
+                        }
+                    }
+                }
+            }
+            if ((numberFaceValue20 + numberFaceValue50 + numberFaceValue100 != 0) || (giveMoney == faceValue20)) {
+                if (giveMoney == faceValue20) {
+                    numberFaceValue20 = 1;
+                }
+                cart.setBalance(cart.getBalance() - giveMoney);
+            } else {
+                resultGive = false;
+            }
         } else {
-            System.out.print("Извините,банкомат выдает только купюры номиналом 20,50,100");
+            resultGive = false;
         }
-        FileOutputStream fileOutputStream = new FileOutputStream("balance.txt");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(cart);
-        objectOutputStream.close();
+        dataOperations.save(cart);
+        return resultGive;
     }
-    public static void Take(int takeMoney, Cart cart) throws IOException {
+
+    public boolean take(int takeMoney, Cart cart) {
+        cart = dataOperations.read(cart);
+        boolean resultTake = true;
         int faceValue20 = 20;
         int faceValue50 = 50;
         int faceValue100 = 100;
         int numberOfBanknotes = takeMoney / faceValue20;
         int numberFaceValue20 = 0, numberFaceValue50 = 0, numberFaceValue100 = 0;
+        if (takeMoney == faceValue20) {
+            numberFaceValue20 = 1;
+        }
         for (int i = 0; faceValue100 * i <= takeMoney; i++) {
             for (int j = 0; faceValue100 * i + faceValue50 * j <= takeMoney; j++) {
                 for (int k = 0; faceValue100 * i + faceValue50 * j + faceValue20 * k <= takeMoney; k++) {
@@ -60,13 +69,31 @@ public class MoneyTransaction {
         }
         if ((numberFaceValue20 + numberFaceValue50 + numberFaceValue100 != 0) || (takeMoney == faceValue20)) {
             cart.setBalance(cart.getBalance() + takeMoney);
-            System.out.println("Ваш баланс " + cart.getBalance());
         } else {
-            System.out.print("Извините,банкомат принимает купюры номиналом 20,50,100");
+            resultTake = false;
         }
-        FileOutputStream fileOutputStream = new FileOutputStream("balance.txt");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        objectOutputStream.writeObject(cart);
-        objectOutputStream.close();
+        dataOperations.save(cart);
+        return resultTake;
+    }
+
+    public void readBalance(Cart cart) {
+        cart = dataOperations.read(cart);
+        System.out.println(cart.getBalance());
+    }
+
+    public void anotherOperation() {
+        System.out.println("Для продолжения работы нажмите 1. Для выхода - нажмите 2");
+        Scanner scanner = new Scanner(System.in);
+        int continueOperation1 = scanner.nextInt();
+        switch (continueOperation1) {
+            case 1:
+                OperationSelection.balanceOperation();
+                break;
+            case 2:
+                System.out.println("До свидания");
+                break;
+            default:
+                System.out.println("Такой операции не существует");
+        }
     }
 }
