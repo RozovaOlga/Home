@@ -20,7 +20,7 @@ public class Storage implements DataOperations {
         return cart;
     }
 
-    public void save(Cart cart) {
+    public Cart save(Cart cart) {
         try {
             FileOutputStream fileOutputStream = new FileOutputStream("balance.txt");
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
@@ -29,6 +29,7 @@ public class Storage implements DataOperations {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return cart;
     }
 }
 
