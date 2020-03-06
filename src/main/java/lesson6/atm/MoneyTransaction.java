@@ -1,99 +1,89 @@
 package main.java.lesson6.atm;
 
-import java.util.Scanner;
-
-public class MoneyTransaction {
+/**
+ * The type Money transaction.
+ */
+public final class MoneyTransaction {
+    /**
+     * The Data operations.
+     */
     DataOperations dataOperations = new Storage();
 
-    public boolean give(int giveMoney, Cart cart) {
+    /**
+     * If the ATM can issue the amount - gives it
+     * Give boolean.
+     *
+     * @param giveMoney the give money
+     * @param cart      the cart
+     * @return the boolean
+     */
+    public final boolean give(int giveMoney, Cart cart) {
         cart = dataOperations.read(cart);
         boolean resultGive = true;
-        if (cart.getBalance() >= giveMoney) {
-            int faceValue20 = 20;
-            int faceValue50 = 50;
-            int faceValue100 = 100;
-            int numberOfBanknotes = giveMoney / faceValue20;
-            int numberFaceValue20 = 0, numberFaceValue50 = 0, numberFaceValue100 = 0;
-            if (giveMoney == faceValue20) {
-                numberFaceValue20 = 1;
-            }
-            for (int i = 0; faceValue100 * i <= giveMoney; i++) {
-                for (int j = 0; faceValue100 * i + faceValue50 * j <= giveMoney; j++) {
-                    for (int k = 0; faceValue100 * i + faceValue50 * j + faceValue20 * k <= giveMoney; k++) {
-                        if ((giveMoney == faceValue100 * i + faceValue50 * j + faceValue20 * k) && (numberOfBanknotes > i + j + k)) {
-                            numberOfBanknotes = i + j + k;
-                            numberFaceValue20 = k;
-                            numberFaceValue50 = j;
-                            numberFaceValue100 = i;
-                        }
-                    }
-                }
-            }
-            if ((numberFaceValue20 + numberFaceValue50 + numberFaceValue100 != 0) || (giveMoney == faceValue20)) {
-                if (giveMoney == faceValue20) {
-                    numberFaceValue20 = 1;
-                }
-                cart.setBalance(cart.getBalance() - giveMoney);
-            } else {
-                resultGive = false;
-            }
+        int money = giveMoney;
+        if (banknoteCheck(money)) {
+            cart.setBalance(cart.getBalance() - giveMoney);
+            dataOperations.save(cart);
         } else {
             resultGive = false;
         }
-        dataOperations.save(cart);
         return resultGive;
     }
 
-    public boolean take(int takeMoney, Cart cart) {
+    /**
+     * If the ATM can take the amount - it takes
+     * Take boolean.
+     *
+     * @param takeMoney the take money
+     * @param cart      the cart
+     * @return the boolean
+     */
+    public final boolean take(int takeMoney, Cart cart) {
         cart = dataOperations.read(cart);
-        boolean resultTake = true;
-        int faceValue20 = 20;
-        int faceValue50 = 50;
-        int faceValue100 = 100;
-        int numberOfBanknotes = takeMoney / faceValue20;
-        int numberFaceValue20 = 0, numberFaceValue50 = 0, numberFaceValue100 = 0;
-        if (takeMoney == faceValue20) {
-            numberFaceValue20 = 1;
+        boolean resultGive = true;
+        int money = takeMoney;
+        if (banknoteCheck(money)) {
+            cart.setBalance(cart.getBalance() + takeMoney);
+            dataOperations.save(cart);
+        } else {
+            resultGive = false;
         }
-        for (int i = 0; faceValue100 * i <= takeMoney; i++) {
-            for (int j = 0; faceValue100 * i + faceValue50 * j <= takeMoney; j++) {
-                for (int k = 0; faceValue100 * i + faceValue50 * j + faceValue20 * k <= takeMoney; k++) {
-                    if ((takeMoney == faceValue100 * i + faceValue50 * j + faceValue20 * k) && (numberOfBanknotes > i + j + k)) {
-                        numberOfBanknotes = i + j + k;
-                        numberFaceValue20 = k;
-                        numberFaceValue50 = j;
-                        numberFaceValue100 = i;
-                    }
-                }
+        return resultGive;
+    }
+
+    /**
+     * reads balance from file
+     *
+     * @param cart the cart
+     * @return the int
+     */
+    public final int readBalance(Cart cart) {
+        cart = dataOperations.read(cart);
+        return cart.getBalance();
+    }
+
+    /**
+     * Banknote check boolean.
+     * <p>
+     * Checks if the ATM can issue or accept the required amount.
+     *
+     * @param money the money
+     * @return the boolean
+     */
+    public final boolean banknoteCheck(int money) {
+        boolean result = true;
+        int INF = 1000000000;
+        int[] sum = new int[money + 1];
+        for (int m = 1; m <= money; m++) {
+            sum[m] = INF;
+            for (int i = 0; i < Banknotes.getBanknotes().size(); i++) {
+                if (m >= Banknotes.getBanknotes().get(i) && sum[m - Banknotes.getBanknotes().get(i)] < sum[m])
+                    sum[m] = sum[m - Banknotes.getBanknotes().get(i)] + 1;
             }
         }
-        if ((numberFaceValue20 + numberFaceValue50 + numberFaceValue100 != 0) || (takeMoney == faceValue20)) {
-            cart.setBalance(cart.getBalance() + takeMoney);
-        } else {
-            resultTake = false;
+        if (sum[money] == INF) {
+            result = false;
         }
-        dataOperations.save(cart);
-        return resultTake;
-    }
-
-    public void readBalance(Cart cart) {
-        cart = dataOperations.read(cart);
-        System.out.println(cart.getBalance());
-    }
-
-    public void anotherOperation() {
-        System.out.println("Для продолжения работы нажмите 1. Для выхода - нажмите 2");
-        Scanner scanner = new Scanner(System.in);
-        int continueOperation1 = scanner.nextInt();
-        switch (continueOperation1) {
-            case 1:
-                OperationSelection.balanceOperation();
-                break;
-            case 2:
-                System.out.println("До свидания");
-                break;
-            default:
-                System.out.println("Такой операции не существует");
-        }
+        return result;
     }
 }

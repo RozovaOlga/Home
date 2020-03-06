@@ -2,22 +2,33 @@ package main.java.lesson6.atm;
 
 import java.util.Scanner;
 
-public class Security {
-    public static boolean checkSecurity(Cart cart) {
-        int result = 0;
+/**
+ * The type Security.
+ */
+public final class Security {
+    /**
+     * Check security.
+     * Checking the pin code. If 3 attempts fail - exit the program
+     *
+     * @param cart the cart
+     */
+    public static void checkSecurity(Cart cart) {
+        int attempt = 0;
         Scanner scanner = new Scanner(System.in);
-        System.out.println("ВВедите пароль (1234)");
-        int pin = scanner.nextInt();
-        for (int match = 0; pin > match; ++result)
-            match = (match << 3) + (match << 1) + 9;
-        if (result != 4) {
-            System.out.println("Пароль должен состоять из 4 цифр");
-            return false;
-        } else if (pin != cart.getPinCode()) {
-            System.out.println("Неправильный пароль");
-            return false;
+        System.out.println("Введите пароль (1234)");
+        while (attempt < 3) {
+            int pin = scanner.nextInt();
+            if (pin != cart.getPIN()) {
+                attempt++;
+                System.out.println("Неправильный PIN");
+            } else {
+                System.out.println("Здравствуйте!");
+                break;
+            }
+            if (attempt == 3) {
+                System.out.println("Карта заблокирована. До свидания");
+                System.exit(0);
+            }
         }
-        return true;
     }
 }
-

@@ -2,30 +2,49 @@ package main.java.lesson6.atm;
 
 import java.io.*;
 
+/**
+ * The type Cart.
+ */
 public class Cart implements Serializable {
-    private int pinCode;
+    private final int PIN;
     private int balance;
 
-    public void setBalance(int balance) {
+    /**
+     * Instantiates a new Cart.
+     *
+     * @param pin     the pin
+     * @param balance the balance
+     */
+    public Cart(int pin, int balance) {
+        PIN = pin;
         this.balance = balance;
     }
 
+    /**
+     * Gets pin.
+     *
+     * @return the pin
+     */
+    public int getPIN() {
+        return PIN;
+    }
+
+    /**
+     * Gets balance.
+     *
+     * @return the balance
+     */
     public int getBalance() {
         return balance;
     }
 
-    public void setPinCode(int pinCode) {
-        this.pinCode = pinCode;
-    }
-
-    public int getPinCode() {
-        return pinCode;
-    }
-
-
-    public Cart(int pinCode, int balance) {
-        this.pinCode = pinCode;
+    /**
+     * Sets balance.
+     *
+     * @param balance the balance
+     */
+    public void setBalance(int balance) {
         this.balance = balance;
     }
-
 }
+
