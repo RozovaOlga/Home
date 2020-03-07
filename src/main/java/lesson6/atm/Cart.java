@@ -6,7 +6,7 @@ import java.io.*;
  * The type Cart.
  */
 public class Cart implements Serializable {
-    private final int PIN;
+    transient private final int PIN;
     private int balance;
 
     /**
