@@ -16,9 +16,9 @@ public class Number27 {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        final List<Integer> randomNumbers = randomNumbers1();
-        final List<Integer> deletingPostingNumber = getList(randomNumbers);
-        System.out.println(randomNumbers);
+        final List<Integer> numbers = randomNumbers1();
+        final List<Integer> deletingPostingNumber = getList(numbers);
+        System.out.println(numbers);
         System.out.println(deletingPostingNumber);
     }
 

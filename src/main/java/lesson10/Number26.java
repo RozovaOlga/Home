@@ -3,6 +3,7 @@ package main.java.lesson10;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * The type Number 26.
@@ -17,9 +18,20 @@ public class Number26 {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        final List<Integer> rating = new ArrayList<>(Arrays.asList(5, 10, 5, 2, 6, 9, 8, 6, 3));
+        final List<Integer> rating = randomRaring();
         final List<Integer> satisfactoryRating = getList(rating);
+        System.out.println(rating);
         System.out.println(satisfactoryRating);
+    }
+
+    private static List<Integer> randomRaring() {
+        int i = 10;
+        final List<Integer> randomNumbers = new ArrayList<Integer>(i);
+        final Random rand = new Random();
+        while (i-- > 0) {
+            randomNumbers.add(rand.nextInt(10));
+        }
+        return randomNumbers;
     }
 
     private static List<Integer> getList(final List<Integer> satisfactoryRating) {
