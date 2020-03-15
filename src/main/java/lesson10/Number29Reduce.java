@@ -4,7 +4,19 @@ import java.util.*;
 
 import static java.util.Collections.singletonMap;
 
+/**
+ * The type Number 29 reduce.
+ * Имеется текст. Следует составить для него частотный словарь
+ */
 public class Number29Reduce {
+    /**
+     * The entry point of application.
+     * Regular expressions :
+     * * "[^A-Za-zА-Яа-я_]" - not letters;
+     * * "\\s+" - one or more spaces.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         final String text = "Дети постоянно хотят  смотреть мультики. Мультики, мультики... это ведь дети.";
         final List<String> wordText = Arrays.asList
