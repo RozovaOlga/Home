@@ -25,7 +25,7 @@ public class Number33 {
             filePath.mkdir();
         }
         createNew(filePath);
-        readFilePach(filePath);
+        readFilePath(filePath);
         readDirectoryPath(filePath);
     }
 
@@ -35,8 +35,10 @@ public class Number33 {
             filePath1.mkdir();
             File filePath2 = new File(filePath, "Directory2");
             filePath2.mkdir();
-            File filePath3 = new File(filePath, "Directory3");
+            File filePath3 = new File(filePath, ".Directory3");
             filePath3.mkdir();
+            Process p = Runtime.getRuntime().exec("attrib +H " + filePath3.getAbsolutePath());
+            p.waitFor();
             File file1 = new File(filePath1, "test1.txt");
             File file2 = new File(filePath2, "test2.txt");
             File file3 = new File(filePath3, "test3.txt");
@@ -47,7 +49,7 @@ public class Number33 {
             } catch (IOException e) {
                 System.out.println("error");
             }
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | InterruptedException | IOException e) {
             System.out.println("Ой ей");
         }
     }
@@ -66,7 +68,7 @@ public class Number33 {
         }
     }
 
-    private static void readFilePach(File filePath) {
+    private static void readFilePath(File filePath) {
         try {
             Files.walk(Paths.get(String.valueOf(filePath)))
                     .map(Path::toFile)
