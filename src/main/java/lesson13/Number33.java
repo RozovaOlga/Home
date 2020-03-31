@@ -42,13 +42,9 @@ public class Number33 {
             File file1 = new File(filePath1, "test1.txt");
             File file2 = new File(filePath2, "test2.txt");
             File file3 = new File(filePath3, "test3.txt");
-            try {
-                file1.createNewFile();
-                file2.createNewFile();
-                file3.createNewFile();
-            } catch (IOException e) {
-                System.out.println("error");
-            }
+            file1.createNewFile();
+            file2.createNewFile();
+            file3.createNewFile();
         } catch (NullPointerException | InterruptedException | IOException e) {
             System.out.println("Ой ей");
         }
