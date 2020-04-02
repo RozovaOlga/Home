@@ -32,10 +32,10 @@ public class Number33 {
     private static void createNew(File filePath) {
         try {
             File filePath1 = new File(filePath, "Directory1");
-            filePath1.mkdir();
             File filePath2 = new File(filePath, "Directory2");
-            filePath2.mkdir();
             File filePath3 = new File(filePath, ".Directory3");
+            filePath1.mkdir();
+            filePath2.mkdir();
             filePath3.mkdir();
             Process p = Runtime.getRuntime().exec("attrib +H " + filePath3.getAbsolutePath());
             p.waitFor();
