@@ -19,7 +19,7 @@ public class CreateFile {
         try {
             file.createNewFile();
         } catch (IOException e) {
-            System.out.println("файл не создан");
+            System.out.println("error");
         }
     }
 

@@ -16,9 +16,7 @@ public class Storage implements DataOperation {
                 objectInputStream.close();
             }
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Извините, технические неполадки1.");
-            System.exit(1);
+            System.out.println("error");
         }
         return list;
     }
@@ -32,8 +30,7 @@ public class Storage implements DataOperation {
             objectOutputStream.writeObject(list);
             objectOutputStream.close();
         } catch (IOException e) {
-            System.out.println(e.getMessage());
-            System.out.println("Извините, технические неполадки.");
+            System.out.println("error");
         }
         return list;
     }

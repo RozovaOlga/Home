@@ -28,7 +28,7 @@ public class ListBook implements Serializable {
                 list.add(books);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("error");
         }
         return list;
     }
