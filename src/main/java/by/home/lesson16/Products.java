@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Products {
-    private static List<String> products = new ArrayList<>();
+    private final static List<String> products = new ArrayList<>();
 
     public static List<String> getProducts() {
         return products;
